@@ -47,7 +47,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public List<Contact> getAllContacts() {
         List<Contact> list = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT * FROM contacts", null);
+        Cursor c = db.rawQuery("SELECT * FROM contacts ORDER BY name COLLATE NOCASE ASC", null);
 
         while (c.moveToNext()) {
             list.add(new Contact(
